@@ -9,10 +9,8 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import { Server } from "socket.io";
 import { createServer } from "http";
-import dotenv from "dotenv"
-dotenv.config()
 
-let conn = await mongoose.connect(process.env.MONGO_URL);
+let conn = await mongoose.connect("mongodb://localhost:27017/quickchat");
 
 const onlineUsers = new Set();
 
@@ -37,7 +35,7 @@ app.use(
 );
 app.use(bodyParser.json());
 
-const con = mongoose.createConnection(process.env.MONGO_URL);
+const con = mongoose.createConnection("mongodb://localhost:27017/quickchat");
 
 // Init gfs
 let gfs, gridFsBucket;
@@ -53,7 +51,7 @@ con.once("open", () => {
 
 // Create storage engine
 const storage = new GridFsStorage({
-  url: process.env.MONGO_URL,
+  url: "mongodb://localhost:27017/quickchat",
   file: (req, file) => {
     return {
       bucketName: "uploads",
