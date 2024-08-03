@@ -53,7 +53,7 @@ con.once("open", () => {
 
 // Create storage engine
 const storage = new GridFsStorage({
-  url: "mongodb://localhost:27017/quickchat",
+  url: process.env.MONGO_URL,
   file: (req, file) => {
     return {
       bucketName: "uploads",
