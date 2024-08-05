@@ -20,6 +20,8 @@ const onlineUsers = new Set();
 const app = express();
 const port = 9000;
 
+app.options('*', cors());
+
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
