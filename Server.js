@@ -26,6 +26,7 @@ const io = new Server(server, {
     origin: ["https://quick-chat-eight.vercel.app", "http://localhost:3000"],
     methods: ["GET", "POST"],
     credentials: true,
+    allowedHeaders: 'Content-Type'
   },
 });
 
@@ -34,6 +35,7 @@ app.use(
     origin: ["https://quick-chat-eight.vercel.app", "http://localhost:3000"],
     methods: ["GET", "POST"],
     credentials: true,
+    allowedHeaders: 'Content-Type'
   })
 );
 app.use(bodyParser.json());
